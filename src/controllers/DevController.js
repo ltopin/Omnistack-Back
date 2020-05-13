@@ -14,7 +14,7 @@ module.exports = {
     const { github_username, techs, latitude, longitude } = request.body;
 
     let dev = await Dev.findOne({
-      github_username
+      github_username,
     });
 
     if (!dev) {
@@ -28,7 +28,7 @@ module.exports = {
 
       const location = {
         type: "Point",
-        coordinates: [longitude, latitude]
+        coordinates: [longitude, latitude],
       };
 
       dev = await Dev.create({
@@ -37,10 +37,11 @@ module.exports = {
         avatar_url,
         bio,
         techs: techsArray,
-        location
+        location,
+        teste,
       });
     }
 
     return response.json(dev);
-  }
+  },
 };
